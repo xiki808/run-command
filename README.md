@@ -10,4 +10,10 @@ Reload the file:
 
 `source ./bashrc`
 
-Run `scripts` to get available commands.
+<b>Installation</b>
+
+In the root directory run the installation script:
+
+`bash install.sh`
+
+Run `scripts` command to get available commands.
