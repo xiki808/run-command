@@ -20,6 +20,8 @@ if [ -n "$1" ]; then
 else
   echo -e "Scripts! Available commands:\n"
   echo -e "${GREEN}lemp${NC}          | Start LEMP stack services"
+  echo -e "          ${YELLOW}Arg${NC} | ${BLUE}[action]${NC} The action taken for the servcies."
+  echo -e "      ${YELLOW}Options${NC} | ${BLUE}Default:${NC} start | stop / restart"
   echo -e "${GREEN}uninstall${NC}     | Uninstall a package"
-  echo -e "         ${YELLOW}Args${NC} | ${BLUE}[name]${NC} The package name"
+  echo -e "          ${YELLOW}Arg${NC} | ${BLUE}[name]${NC} The package name"
 fi
