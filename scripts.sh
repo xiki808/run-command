@@ -1,17 +1,25 @@
 #!/bin/bash
 
+FULL_PATH=$(realpath $0)
+DIR_PATH=$(dirname $FULL_PATH)
+
+source "$DIR_PATH/config.sh"
+
 if [ -n "$1" ]; then
-  full_path=$(realpath $0)
-  dir_path=$(dirname $full_path)
 
   case $1 in
 
   lemp)
-    source "$dir_path/scripts/lemp.sh"
+    source "$DIR_PATH/scripts/lemp.sh"
+    ;;
+  uninstall)
+    source "$DIR_PATH/scripts/uninstall.sh"
     ;;
 
   esac
 else
-  echo -e 'Scripts! Available commands:\n'
-  echo -e 'lemp     | Start LEMP stack services\n'
+  echo -e "Scripts! Available commands:\n"
+  echo -e "${GREEN}lemp${NC}          | Start LEMP stack services"
+  echo -e "${GREEN}uninstall${NC}     | Uninstall a package"
+  echo -e "         ${YELLOW}Args${NC} | ${BLUE}[name]${NC} The package name"
 fi
