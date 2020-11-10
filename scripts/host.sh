@@ -2,6 +2,13 @@ APPLY=false
 
 case $2 in
 
+help)
+  echo -e "          ${GREEN}host${NC} | Configure NGINX hosting."
+  echo -e "           ${YELLOW}Arg${NC} | ${BLUE}[type]*${NC} The type of site being hosted."
+  echo -e "       ${YELLOW}Options${NC} | wp"
+  echo -e "               | ${BLUE}[domain-name]*${NC} The domain name."
+  echo -e "               | ${BLUE}[repo-path]*${NC} The path of the site codebase."
+  ;;
 wp)
   sudo cp $DIR_PATH/files/nginx-wp.conf /etc/nginx/sites-available/$3.conf
   sudo sed -i "s/<domain>/$3/g" /etc/nginx/sites-available/$3.conf

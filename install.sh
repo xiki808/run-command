@@ -6,3 +6,4 @@ fi
 
 ln -s $PWD/scripts.sh $HOME/bin/scripts
 chmod +x $HOME/bin/scripts
+export PATH=$PATH:$HOME/bin
