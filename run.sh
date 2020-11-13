@@ -10,20 +10,16 @@ if [ -n "$1" ]; then
 
   case $1 in
 
-  lemp)
-    source "$DIR_PATH/scripts/lemp.sh"
-    ;;
-  uninstall)
-    source "$DIR_PATH/scripts/uninstall.sh"
-    ;;
-  host)
-    source "$DIR_PATH/scripts/host.sh"
-    ;;
-  sql)
-    source "$DIR_PATH/scripts/sql.sh"
-    ;;
-  wp)
-    source "$DIR_PATH/scripts/wp.sh"
+  utils | \
+    lemp | \
+    uninstall | \
+    tail | \
+    host | \
+    sql | \
+    wp)
+
+    source "$DIR_PATH/run/$1.sh"
+    exit 0
     ;;
   *)
     print_error "Incorrect command."
@@ -31,13 +27,15 @@ if [ -n "$1" ]; then
 
   esac
 else
-  echo -e "Scripts!\n"
-  echo -e "Type 'scripts [command] help' for more information.\n"
+  echo -e "Run my custom commands!\n"
+  echo -e "Type 'run [command] help' for more information.\n"
   echo -e "Available commands:\n"
+  echo -e "     ${GREEN}utilities${NC} | Shorthand commands."
   echo -e "          ${GREEN}lemp${NC} | Start LEMP stack services."
   echo -e "     ${GREEN}uninstall${NC} | Uninstall a package."
+  echo -e "          ${GREEN}tail${NC} | Colored log output with follow."
   echo -e "          ${GREEN}host${NC} | Configure NGINX hosting."
   echo -e "           ${GREEN}sql${NC} | Run SQL queries."
   echo -e "            ${GREEN}wp${NC} | WordPress utilities."
-  echo -e "\n"
+  exit 0
 fi

@@ -1,11 +1,15 @@
-case $2 in
+shift
+
+case $1 in
 
 help)
   echo -e "     ${GREEN}uninstall${NC} | Uninstall a package."
-  echo -e "           ${YELLOW}Arg${NC} | ${BLUE}[name]*${NC} The package name to be uninstalled."
+  echo -e "          ${YELLOW}Args${NC} | ${BLUE}[name]${NC} The package name to be uninstalled."
   ;;
 *)
-  sudo apt-get autoremove --purge $2
+  shift
+  validate_args 1 $@
+  sudo apt-get autoremove --purge $1
   ;;
 
 esac

@@ -1,19 +1,11 @@
-Scripts are a bunch of helpers provided by the command `scripts`
-
-<b>Before install</b>
-
-Make sure to have a bin folder in the user home directory. Add it to the `PATH` variable in .bashrc:
-
-`export PATH=$PATH":$HOME/bin"`
-
-Reload the file:
-
-`source ./bashrc`
+Run is a list of custom commands
 
 <b>Installation</b>
 
-In the root directory run the installation script:
+After cloning this repo, in the root directory run the installation script:
 
 `bash install.sh`
 
-Run `scripts` command to get available commands.
+The installation script will create a `bin` folder in the user's home directory and expands the `$PATH` variable to include this path.
+
+Run `run` command to get available commands.
