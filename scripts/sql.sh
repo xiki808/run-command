@@ -9,7 +9,7 @@ dump() {
 }
 
 restore() {
-  mysql --defaults-extra-file=$DIR_PATH/files/sql-login.cnf $3 <$4
+  mysql --defaults-extra-file=$DIR_PATH/files/sql-login.cnf $1 <$2
 }
 
 case $1 in
@@ -75,7 +75,7 @@ restore)
   esac
   ;;
 *)
-  print_error "Wrong SQL command."
+  print_error "Wrong command."
   ;;
 
 esac

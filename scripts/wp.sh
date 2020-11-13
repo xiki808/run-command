@@ -1,5 +1,21 @@
 shift
 
+download() {
+  local VERSION=$(get_arg -v latest $@)
+  wp core download --path=$1 --version=$VERSION --skip-content
+}
+
+create_config() {
+  local PREFIX=$(get_arg -p wp $@)
+  cd $1
+  wp config create --dbname=$2 --dbuser=$3 --dbpass=$4 --dbprefix=$PREFIX_
+  cd $PWD
+}
+
+install() {
+
+}
+
 change_url() {
   sudo cp $DIR_PATH/files/wp-live-to-local.sql $DIR_PATH/tmp/wp-live-to-local.sql
   local PREFIX=$(get_arg -p wp $@)
@@ -28,9 +44,51 @@ help)
   echo -e "Type 'run wp [arg] help' for more information.\n"
   echo -e "            ${GREEN}wp${NC} | WordPress utilities."
   echo -e "          ${YELLOW}Args${NC} | ${BLUE}[utility]${NC} Use WP Utility."
+  echo -e "               | -> download ${BLUE}[download-path] -v${NC}"
+  echo -e "               | -> create-config ${BLUE}[wp-path] [db-name] [db-user] [db-pass] -p${NC}"
   echo -e "               | -> change-url ${BLUE}[db-name] [new-url] -p${NC}"
   echo -e "               | -> create-user ${BLUE}[db-name] -p${NC}"
   echo -e "       ${YELLOW}Options${NC} | ${BLUE}-p${NC} DB prefix."
+  echo -e "               | ${BLUE}-v${NC} WordPress version to be downloaded."
+  ;;
+download)
+  case $2 in
+
+  help)
+    echo -e "            ${GREEN}wp${NC} | WordPress utilities."
+    echo -e "      ${GREEN}download${NC} | Download a WordPress copy."
+    echo -e "          ${YELLOW}Args${NC} | ${BLUE}[download-path]${NC} The path for the WordPress installation. Does not need to exist."
+    echo -e "       ${YELLOW}Options${NC} | ${BLUE}-v${NC} WordPress version to be downloaded."
+    exit 0
+    ;;
+  *)
+    shift
+    validate_args 1 $@
+    download $@
+    ;;
+
+  esac
+  ;;
+create-config)
+  case $2 in
+
+  help)
+    echo -e "            ${GREEN}wp${NC} | WordPress utilities."
+    echo -e " ${GREEN}create-config${NC} | Generate WordPress wp-config.php file."
+    echo -e "          ${YELLOW}Args${NC} | ${BLUE}[wp-path]${NC} The path for the WordPress installation."
+    echo -e "               | ${BLUE}[db-name]${NC} The WordPress DB name."
+    echo -e "               | ${BLUE}[db-user]${NC} User for DB."
+    echo -e "               | ${BLUE}[db-pass]${NC} Password for DB."
+    echo -e "       ${YELLOW}Options${NC} | ${BLUE}-p${NC} DB prefix."
+    exit 0
+    ;;
+  *)
+    shift
+    validate_args 4 $@
+    create_config $@
+    ;;
+
+  esac
   ;;
 change-url)
   case $2 in
@@ -70,7 +128,7 @@ create-user)
   esac
   ;;
 *)
-  print_error "Wrong WP command."
+  print_error "Wrong command."
   ;;
 
 esac

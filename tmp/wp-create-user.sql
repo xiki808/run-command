@@ -11,7 +11,7 @@ INSERT INTO wp_users (
     `display_name`
   )
 VALUES (
-    '11',
+    '30',
     'admin',
     MD5('asdf'),
     'admin',
@@ -25,9 +25,9 @@ VALUES (
 INSERT INTO wp_usermeta (`umeta_id`, `user_id`, `meta_key`, `meta_value`)
 VALUES (
     NULL,
-    '11',
+    '30',
     'wp_capabilities',
     'a:1:{s:13:"administrator";s:1:"1";}'
   );
 INSERT INTO wp_usermeta (`umeta_id`, `user_id`, `meta_key`, `meta_value`)
-VALUES (NULL, '11', 'wp_user_level', '10');
+VALUES (NULL, '30', 'wp_user_level', '10');

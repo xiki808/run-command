@@ -18,7 +18,7 @@ if [ -n "$1" ]; then
     sql | \
     wp)
 
-    source "$DIR_PATH/run/$1.sh"
+    source "$DIR_PATH/scripts/$1.sh"
     exit 0
     ;;
   *)
@@ -30,7 +30,7 @@ else
   echo -e "Run my custom commands!\n"
   echo -e "Type 'run [command] help' for more information.\n"
   echo -e "Available commands:\n"
-  echo -e "     ${GREEN}utilities${NC} | Shorthand commands."
+  echo -e "         ${GREEN}utils${NC} | Shorthand commands."
   echo -e "          ${GREEN}lemp${NC} | Start LEMP stack services."
   echo -e "     ${GREEN}uninstall${NC} | Uninstall a package."
   echo -e "          ${GREEN}tail${NC} | Colored log output with follow."

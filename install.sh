@@ -9,7 +9,7 @@ if [ ! -d "$HOME/bin" ]; then
   sudo mkdir $HOME/bin
 fi
 
-cp $PWD/run.sh $HOME/bin/run
+ln -s $PWD/run.sh $HOME/bin/run
 chmod +x $HOME/bin/run
 
 ADD_TO_PATH=false

@@ -45,10 +45,9 @@ get_arg() {
 
 validate_args() {
   local ARGS=$1
-
   shift
 
-  if [ $ARGS -lt $# ]; then
+  if [ $ARGS -gt $# ]; then
     print_error "Invalid number of arguments."
   fi
 }

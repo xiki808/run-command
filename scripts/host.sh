@@ -1,7 +1,6 @@
 shift
 
 wp() {
-  echo $@
   sudo cp $DIR_PATH/files/nginx-wp.conf /etc/nginx/sites-available/$1.conf
   configure_nginx $@
 }
@@ -30,7 +29,7 @@ wp)
   help)
     echo -e "          ${GREEN}host${NC} | Configure NGINX hosting."
     echo -e "            ${GREEN}wp${NC} | Create a WordPress hosting."
-    echo -e "          ${YELLOW}Args${NC} | ${BLUE}[domain-name]${NC} The domain name used for the hosting."
+    echo -e "          ${YELLOW}Args${NC} | ${BLUE}[domain-name]${NC} The domain name used for the hosting. Example: domain.loc"
     echo -e "               | ${BLUE}[repo-path]${NC} The site repository absolute path."
     exit 0
     ;;
@@ -43,7 +42,7 @@ wp)
   esac
   ;;
 *)
-  print_error "Wrong host type."
+  print_error "Wrong command."
   ;;
 
 esac
