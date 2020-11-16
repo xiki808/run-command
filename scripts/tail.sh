@@ -7,7 +7,6 @@ help)
   echo -e "          ${YELLOW}Args${NC} | ${BLUE}[file-path]${NC} The file path of the log file to print and follow."
   ;;
 *)
-  shift
   validate_args 1 $@
   tail -f $1 | ccze -A
   ;;

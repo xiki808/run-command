@@ -12,10 +12,6 @@ create_config() {
   cd $PWD
 }
 
-install() {
-
-}
-
 change_url() {
   sudo cp $DIR_PATH/files/wp-live-to-local.sql $DIR_PATH/tmp/wp-live-to-local.sql
   local PREFIX=$(get_arg -p wp $@)

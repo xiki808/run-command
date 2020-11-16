@@ -7,7 +7,6 @@ help)
   echo -e "          ${YELLOW}Args${NC} | ${BLUE}[name]${NC} The package name to be uninstalled."
   ;;
 *)
-  shift
   validate_args 1 $@
   sudo apt-get autoremove --purge $1
   ;;
