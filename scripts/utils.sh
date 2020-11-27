@@ -17,13 +17,21 @@ up_wpsite() {
   run wp create-user $3 $@
 }
 
+restore_wpiste() {
+  run restore $1 $2
+  run wp change_url $1 $3 $@
+  run wp create-user $1 $@
+}
+
 case $1 in
 
 help)
+  echo -e "Type 'run wp [arg] help' for more information.\n"
   echo -e "         ${GREEN}utils${NC} | Shorthand commands."
   echo -e "          ${YELLOW}Args${NC} | ${BLUE}[type]${NC} Type of utility."
   echo -e "               | -> up-site ${BLUE}[domain-name] [repo-path] [db-name] [path-to-file]${NC}"
   echo -e "               | -> up-wpsite ${BLUE}[domain-name] [repo-path] [db-name] [path-to-file] [new-url] -p${NC}"
+  echo -e "               | -> restore-wpsite ${BLUE}[db-name] [path-to-file] [new-url] -p${NC}"
   echo -e "       ${YELLOW}Options${NC} | ${BLUE}-p${NC} DB prefix."
   ;;
 up-site)
@@ -53,7 +61,7 @@ up-wpsite)
     echo -e "         ${GREEN}utils${NC} | Shorthand commands."
     echo -e "       ${GREEN}up-site${NC} | Host a site and create a DB restore from a backup file."
     echo -e "          ${YELLOW}Args${NC} | ${BLUE}[domain-name]${NC} The domain name used for the hosting."
-    echo -e "               | ${BLUE}[dir-path]${NC} The absolute path of WordPress installation directory. Does not need to exist."
+    echo -e "               | ${BLUE}[dir-path]${NC} The absolute path of WordPress installation directory. Directory needs to exist first."
     echo -e "               | ${BLUE}[db-name]${NC} The name for DB to be backed up."
     echo -e "               | ${BLUE}[db-user]${NC} User for DB."
     echo -e "               | ${BLUE}[db-pass]${NC} Password for DB."
@@ -66,6 +74,27 @@ up-wpsite)
     shift
     validate_args 5 $@
     up_wpsite $@
+    ;;
+
+  esac
+  ;;
+restore-wpsite)
+  case $2 in
+
+  help)
+    echo -e "         ${GREEN}utils${NC} | Shorthand commands."
+    echo -e "       ${GREEN}up-site${NC} | Host a site and create a DB restore from a backup file."
+    echo -e "          ${YELLOW}Args${NC} | ${BLUE}[db-name]${NC} The name for DB to be backed up.."
+    echo -e "               | ${BLUE}[path-to-file]${NC} The path of the backup file to be restored."
+    echo -e "               | ${BLUE}[new-url]${NC} The new URL"
+    echo -e "       ${YELLOW}Options${NC} | ${BLUE}-p${NC} WordPress DB prefix."
+    echo -e "               | ${BLUE}-d${NC} The path of the DB backup file to be restored."
+    exit 0
+    ;;
+  *)
+    shift
+    validate_args 3 $@
+    restore_wpsite $@
     ;;
 
   esac

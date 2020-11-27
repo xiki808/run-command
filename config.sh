@@ -6,4 +6,4 @@ BLUE='\033[0;94m'
 
 NC='\033[0m' # No colour
 
-NGINX_LOGS=/home/xiki/logs/
+LOG_DIR=/home/xiki/logs/

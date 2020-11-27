@@ -8,7 +8,7 @@ download() {
 create_config() {
   local PREFIX=$(get_arg -p wp $@)
   cd $1
-  wp config create --dbname=$2 --dbuser=$3 --dbpass=$4 --dbprefix=$PREFIX_
+  wp config create --dbname=$2 --dbuser=$3 --dbpass=$4 --dbprefix=${PREFIX}_
   cd $PWD
 }
 
@@ -53,7 +53,7 @@ download)
   help)
     echo -e "            ${GREEN}wp${NC} | WordPress utilities."
     echo -e "      ${GREEN}download${NC} | Download a WordPress copy."
-    echo -e "          ${YELLOW}Args${NC} | ${BLUE}[download-path]${NC} The path for the WordPress installation. Does not need to exist."
+    echo -e "          ${YELLOW}Args${NC} | ${BLUE}[download-path]${NC} The path for the WordPress installation. Directory needs to exist first."
     echo -e "       ${YELLOW}Options${NC} | ${BLUE}-v${NC} WordPress version to be downloaded."
     exit 0
     ;;

@@ -6,12 +6,12 @@ DIR_PATH=$(dirname $FULL_PATH)
 source "$DIR_PATH/config.sh"
 source "$DIR_PATH/helpers.sh"
 
-if [ -n "$1" ]; then
+if [ -n "$1" ] && [ "help" -ne "$1" ]; then
 
   case $1 in
 
   utils | \
-    lemp | \
+    stack | \
     uninstall | \
     tail | \
     host | \
@@ -31,7 +31,7 @@ else
   echo -e "Type 'run [command] help' for more information.\n"
   echo -e "Available commands:\n"
   echo -e "         ${GREEN}utils${NC} | Shorthand commands."
-  echo -e "          ${GREEN}lemp${NC} | Start LEMP stack services."
+  echo -e "         ${GREEN}stack${NC} | STACK services."
   echo -e "     ${GREEN}uninstall${NC} | Uninstall a package."
   echo -e "          ${GREEN}tail${NC} | Colored log output with follow."
   echo -e "          ${GREEN}host${NC} | Configure NGINX hosting."

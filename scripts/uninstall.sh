@@ -8,7 +8,7 @@ help)
   ;;
 *)
   validate_args 1 $@
-  sudo apt-get autoremove --purge $1
+  sudo apt-get autoremove -y --purge $1
   ;;
 
 esac
