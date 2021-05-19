@@ -17,9 +17,9 @@ up_wpsite() {
   run wp create-user $3 $@
 }
 
-restore_wpiste() {
-  run restore $1 $2
-  run wp change_url $1 $3 $@
+restore_wpsite() {
+  run sql restore $1 $2
+  run wp change-url $1 $3 $@
   run wp create-user $1 $@
 }
 

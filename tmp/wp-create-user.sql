@@ -1,4 +1,4 @@
-INSERT INTO cd_users (
+INSERT INTO wp_users (
     `ID`,
     `user_login`,
     `user_pass`,
@@ -11,7 +11,7 @@ INSERT INTO cd_users (
     `display_name`
   )
 VALUES (
-    '16',
+    '19',
     'admin',
     MD5('asdf'),
     'admin',
@@ -22,12 +22,12 @@ VALUES (
     '0',
     'Admin'
   );
-INSERT INTO cd_usermeta (`umeta_id`, `user_id`, `meta_key`, `meta_value`)
+INSERT INTO wp_usermeta (`umeta_id`, `user_id`, `meta_key`, `meta_value`)
 VALUES (
     NULL,
-    '16',
+    '19',
     'wp_capabilities',
     'a:1:{s:13:"administrator";s:1:"1";}'
   );
-INSERT INTO cd_usermeta (`umeta_id`, `user_id`, `meta_key`, `meta_value`)
-VALUES (NULL, '16', 'wp_user_level', '10');
+INSERT INTO wp_usermeta (`umeta_id`, `user_id`, `meta_key`, `meta_value`)
+VALUES (NULL, '19', 'wp_user_level', '10');

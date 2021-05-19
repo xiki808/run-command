@@ -6,7 +6,7 @@ DIR_PATH=$(dirname $FULL_PATH)
 source "$DIR_PATH/config.sh"
 source "$DIR_PATH/helpers.sh"
 
-if [ -n "$1" ] && [ "help" -ne "$1" ]; then
+if [ -n "$1" ] && [ "help" != "$1" ]; then
 
   case $1 in
 

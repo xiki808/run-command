@@ -5,7 +5,7 @@ create_db() {
 }
 
 dump() {
-  mysql --defaults-extra-file=$DIR_PATH/files/sql-login.cnf $1 >$1.dump.sql
+  mysqldump --defaults-extra-file=$DIR_PATH/files/sql-login.cnf $1 >$1.dump.sql
 }
 
 restore() {
