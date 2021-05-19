@@ -18,7 +18,7 @@ lamp() {
   fi
   sudo service nginx stop
   sudo service apache2 $ACTION
-  sudo service php7.4-fpm $ACTION
+  sudo service php8.0-fpm $ACTION
   sudo service mysql $ACTION
 }
 
